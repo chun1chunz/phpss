@@ -8,12 +8,12 @@ require_once './views/admin/_share/top_asset.php';
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
-<!--- header --->
-<!----------------------------------               ----------------------------------->
 <?php 
 require_once './views/admin/_share/header.php';
  ?>
+<!--- header --->
+<!----------------------------------               ----------------------------------->
+
 <!----------------------------------               ----------------------------------->
   <!-- Left side column. contains the logo and sidebar -->
 <!------------------------------------------------------------>  
@@ -51,8 +51,10 @@ require_once './views/admin/_share/lside.php';
                         <th>ID</th>
                         <th>Product Name</th>
                         <th>Product Image</th>
+                        <th>Mô tả ngắn</th>
                         <th>Description</th>
                         <th>Sell_price</th>
+                        <th>List_price</th>
                         <th>Status</th>
                         <th>
                             <a class="btn btn-xs btn-success" href="<?= $baseUrl . "admin/product-add" ?>">
@@ -67,9 +69,11 @@ require_once './views/admin/_share/lside.php';
                             <td>
                                 <img src="<?= $baseUrl . "public/" . $item->image ?>" width="180" height="180">
                             </td>
+                            <td><?= $item->info_1 ?></td>
                             <td><textarea rows="9" cols="50"><?= $item->detail ?></textarea></td>
                             <td><?= $item->sell_price ?></td>
-                            <td><?= $item->status ?></td>
+                            <td><?= $item->list_price ?></td>
+                            <td><?= $status=($item->status == 0) ? 'Còn Hàng' : 'Hết hàng'; ?></td>
                             <td>
                                 <span class="">
                                     <a class="btn btn-xs btn-info" href="<?= $baseUrl . "admin/product-edit?id=" . $item->id?>">Sửa</a>
@@ -98,15 +102,7 @@ require_once './views/admin/_share/lside.php';
   </div>
   <!-- /.content-wrapper -->
 <!------------------------------------------------------------------------------------------------------------------------------------>
-<?php 
-require_once './views/admin/_share/footer.php';
- ?>
-<!----------------------------------               ----------------------------------->
-  <!-- Control Sidebar -->
-<!----------------------------------               ----------------------------------->
-<?php 
-require_once './views/admin/_share/control_sidebar.php';
- ?>
+
 <!----------------------------------               ----------------------------------->
 
 </div>

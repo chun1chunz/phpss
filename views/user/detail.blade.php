@@ -41,13 +41,12 @@ require_once 'commons/util.php';
                     <div class="col-md-6 mb-6 mb-lg-6 col-lg-6 text-center service-block" data-aos="fade-up" data-aos-delay="">
                         <span><img src="<?= $baseUrl . "public/" . $model->image ?>" width="350" height="350"></span>
                         
-                        <h2 class="mb-2 text-primary"><?= $model->product_name ?></h2>
+                      <a href=""></a><h2 class="mb-2 text-primary"><?= $model->product_name ?></h2>
                         <p><?= $model->info_1 ?></p>
                     </div>
                     <div class="col-md-6 text-justify">
                       <p><?= $model->detail ?></p>
-                      <p><strong>Số lượng:</strong></p>
-                      <input type="number" name="quantitys" value="1" min="1" placeholder="1" id="number" name="number">
+                      
                       <input type="hidden" name="id" value="104">
                       <br/><br/>
                       <button class="btn btn-button btn-success" onclick="addCart(<?= $model->id; ?>)">Đặt ngay</button>

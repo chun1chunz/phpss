@@ -11,15 +11,11 @@ require_once './views/admin/_share/top_asset.php';
 
 <!--- header --->
 <!----------------------------------               ----------------------------------->
-<?php 
-require_once './views/admin/_share/header.php';
- ?>
+
 <!----------------------------------               ----------------------------------->
   <!-- Left side column. contains the logo and sidebar -->
 <!------------------------------------------------------------>  
-<?php 
-require_once './views/admin/_share/lside.php';
- ?>
+
  <!---------------------------------------------------------------->
 
   <!-- Content Wrapper. Contains page content -->

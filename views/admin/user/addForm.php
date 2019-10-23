@@ -135,9 +135,7 @@ require_once './views/admin/_share/footer.php';
 <!----------------------------------               ----------------------------------->
   <!-- Control Sidebar -->
 <!----------------------------------               ----------------------------------->
-<?php 
-require_once './views/admin/_share/control_sidebar.php';
- ?>
+
 <!----------------------------------               ----------------------------------->
 
 </div>
@@ -147,11 +145,6 @@ require_once './views/admin/_share/control_sidebar.php';
 require_once './views/admin/_share/bottom_asset.php';
  ?>
 <!----------------------------------               ----------------------------------->
-
-
-
-
-
 
 
 </body>

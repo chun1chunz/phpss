@@ -7,8 +7,6 @@ class BaseModel
                                     "root", "");
     }
 
-
-
     public static function count(){
         $model = new static();
         $model->queryBuilder = "select count(*) as total from " . $model->table;
@@ -26,10 +24,9 @@ class BaseModel
                                     . " where $col $op $val";
         return $model;
     }
-        public static function where2($col, $val){
+        public static function where2($arr){
         $model = new static();
-        $model->queryBuilder = "select * from " . $model->table 
-                                    . " where $col = '$val'";
+        $model->queryBuilder = "select * from $model->tableName where $arr[0] $arr[1] '$arr[2]'";
         $result = $model->get();
         if(count($result) > 0){
             return $result[0];
@@ -65,7 +62,6 @@ class BaseModel
         return $stmt->fetchAll(PDO::FETCH_CLASS, get_class($this));
     }
 
-
     public static function delete($id)
     {
         $model = new static();
@@ -75,11 +71,22 @@ class BaseModel
         $stmt->execute();
         return true;
     }
+
     public function exeQuery(){
         $stmt = $this->connect->prepare($this->queryBuilder);
         $stmt->execute();
-        return true;
+        return null;
+        
     }
+    public function abc(){
+        $stmt = $this->connect->prepare($this->queryBuilder);
+        $stmt->execute();
+        $last_id = $this->stmt->lastInsertId();
+        echo $last_id; die;
+        return $last_id;
+        
+    }
+    
 }
 
 ?>

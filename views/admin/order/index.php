@@ -1,21 +1,30 @@
-<?php 
-  $adminAssetUrl = "http://localhost/book/views/admin/adminlte/";
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
 <?php 
-require_once '_share/top_asset.php';
+$baseUrl = "http://localhost/book/";
+$userUrl = "http://localhost/book/user/";
+$adminUrl = "http://localhost/book/views/admin";
+$adminAssetUrl = "http://localhost/book/views/admin/adminlte/";
+require_once './views/admin/_share/top_asset.php';
+
  ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+
+<!--- header --->
+<!----------------------------------               ----------------------------------->
+
+<!----------------------------------               ----------------------------------->
+  <!-- Left side column. contains the logo and sidebar -->
+<!------------------------------------------------------------>  
 <?php 
 require_once './views/admin/_share/lside.php';
  ?>
- <?php 
-require_once './views/admin/_share/header.php';
- ?>
+ <!---------------------------------------------------------------->
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -31,64 +40,44 @@ require_once './views/admin/_share/header.php';
     </section>
 
 
+
 <!--------------------------------------------------------------------------------------------------------------------->
-    <!-- Main content -->
-    <section class="content">
-      <!-- Small boxes (Stat box) -->
+
+
+<section class="content">
       <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3><?= $count_Product ?></h3>
-              <p>Sản phẩm</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="<?= $baseUrl . "admin/product"?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <div class="col-xs-12">
+          <div class="box">
+              <div class="box-body">
+              <table class="table-shopping-cart table-bordered border-secondary">
+						<tr class="table-head">
+							<th class="column-1">ID</th>
+							<th class="column-2">Tên sản phẩm</th>
+							<th class="column-3">Giá gốc</th>
+							<th class="column-4">Giá khuyến mãi</th>
+							<th class="column-5">Số lượng</th>
+							<th class="column-6">Thành tiền</th>
+							<th class="column-7">Xóa</th>
+						</tr>
+                        <?php foreach ($order as $item): ?>
+                            <tr>
+                                <td><?= $item->id?></td>
+                            </tr>
+                        <?php endforeach ?>
+                </table>                
+              </div>
+              <!-- /.box-body -->
           </div>
         </div>
-        <!-- ./col -->
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3><?= $count_User ?></h3>
-
-              <p>Tài khoản</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="<?= $baseUrl . "admin/user"?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>65</h3>
-
-              <p>Món đã đặt</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
       </div>
-      <!-- /.row -->
-
     </section>
+
     <!-- /.content -->
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
   </div>
   <!-- /.content-wrapper -->
-   <!--- footer --->   
 <!------------------------------------------------------------------------------------------------------------------------------------>
 
 <!----------------------------------               ----------------------------------->
@@ -99,9 +88,11 @@ require_once './views/admin/_share/header.php';
 
 <!----------------------------------               ----------------------------------->
 <?php 
-require_once '_share/bottom_asset.php';
+require_once './views/admin/_share/bottom_asset.php';
  ?>
 <!----------------------------------               ----------------------------------->
+
+
 
 <script type="text/javascript" src="<?= $baseUrl ?>public/plugins/jquery/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -110,7 +101,7 @@ require_once '_share/bottom_asset.php';
   <?php 
   if(isset($_GET['success']) && $_GET['success'] == 'true'){
     ?>
-    swal('Đăng nhập thành công!');
+    swal('Thêm Sản phẩm thành công!');
   <?php
   }
    ?>
@@ -134,12 +125,6 @@ require_once '_share/bottom_asset.php';
     });
   });
 </script>
-
-
-
-
-
-
 
 
 </body>

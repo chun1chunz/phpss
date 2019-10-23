@@ -21,7 +21,7 @@ class Login extends BaseModel
     function checkLogin(int $role = 0){
 
         if (empty($_SESSION['login'] OR $_SESSION = "")) {
-            header('location: '. $baseUrl . 'login');
+            header('location: '. $baseUrl . 'user_login');
             die;
         } 
         $uid =$_SESSION['login']['id'];

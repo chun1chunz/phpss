@@ -1,5 +1,6 @@
 
 <?php 
+
 require_once 'commons/util.php';
 $sum = 0;
 ?>
@@ -37,7 +38,7 @@ $sum = 0;
                     <?php  $stt=1;  foreach ($_SESSION["cart"] as $key => $value): ?>
                         <tr class="tr">
                           <td><?php echo $stt?></td>
-                          <td><?php echo $value['product_name']?></td>
+                          <td><a href="detail?id=<?= $key ?>"><?php echo $value['product_name']?></a></td>
                           <td><span><img src="<?= $baseUrl . "public/" . $value['image'] ?>" style="height:100px; width:100px;"></span>
                           </td>
                           <td><input type="number" name="number" id="number_<?php echo $key?>" class="form-control" value="<?php echo $value['number']?>" width="50px" height="50" min="0"></td>

@@ -11,20 +11,12 @@ require_once './views/admin/_share/top_asset.php';
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
-<!--- header --->
-<!----------------------------------               ----------------------------------->
-<?php 
-require_once './views/admin/_share/header.php';
- ?>
-<!----------------------------------               ----------------------------------->
-  <!-- Left side column. contains the logo and sidebar -->
-<!------------------------------------------------------------>  
 <?php 
 require_once './views/admin/_share/lside.php';
  ?>
- <!---------------------------------------------------------------->
-
+ <?php 
+require_once './views/admin/_share/header.php';
+ ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -57,7 +49,7 @@ require_once './views/admin/_share/lside.php';
             <th>Email</th>
             <th>Role</th>
             <th>
-                <a class="btn btn-xs btn-success" href="<?= $baseUrl . "admin/user-add" ?>">
+                <a class="btn btn-xs btn-success" href="">
                     Thêm mới
                 </a>
             </th>
@@ -119,9 +111,6 @@ require_once './views/admin/_share/footer.php';
 <!----------------------------------               ----------------------------------->
   <!-- Control Sidebar -->
 <!----------------------------------               ----------------------------------->
-<?php 
-require_once './views/admin/_share/control_sidebar.php';
- ?>
 <!----------------------------------               ----------------------------------->
 
 </div>

@@ -20,26 +20,6 @@
             window.location.href = url;
         }
         </script>
-         <script>
-        var pagination = document.getElementById("pagination");
-        function agination(){
-            first = 'Trang đầu',
-            last= 'Trang cuối',
-            next= '>>',
-            prev= '<<',
-            totalPages= <?= $totalPage?>,
-            alert(totalPages);
-            visiblePages= 5,
-            initiateStartPageClick= false,
-            startPage= <?= $pageNumber?>,
-            onPageClick= function (event, page) {
-            var url = '<?= $baseUrl?>history';
-            url += "?page=" + page;
-                // console.log(url);
-                window.location.href = url;
-                }
-        }
-        
-    </script>
+         
     <script src="<?php $baseUrl ?>public/js/main.js"></script>
     

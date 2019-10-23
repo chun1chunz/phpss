@@ -8,14 +8,9 @@ class UserController
         global $baseUrl;
         global $adminUrl;
         global $adminAssetUrl;   
-        Login::checkLogin(900);     
+        Login::checkLogin(1);     
         $users = User::all();
-        // $uid = $_SESSION['login']['id'];
-
-
-        // echo "<pre>";
-
-        // var_dump($users);die;
+        
         include_once './views/admin/user/index.php';
     }
 

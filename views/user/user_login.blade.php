@@ -2,6 +2,12 @@
 require_once 'commons/util.php';
 ?>
 <?php include_once 'share/css.php'; ?>
+<?php if (isset($_SESSION['login_erorr'])): ?> 
+<div class="alert  alert-success">
+  <strong style="color:brown"> Erorr!</strong>
+  <?php echo $_SESSION['login_erorr']; unset($_SESSION['login_erorr'])?>
+</div>
+<?php endif?>
 <div class="col-md-9 bor">
         <section class="content">
                 <div class="row">
@@ -33,7 +39,7 @@ require_once 'commons/util.php';
                                 </div>
                               <div class="form-group">
                                   <div class="col-sm-9 col-sm-offset-4">
-                                      <button type="submit" class="btn btn-primary" name="signup" value="Sign up">Sign up</button>
+                                      <button type="submit" class="btn btn-primary" name="signup" value="Sign up">Login</button>
                                   </div>
                               </div>
                           </form>

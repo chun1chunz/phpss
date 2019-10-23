@@ -1,5 +1,7 @@
 <?php
 require_once './models/Product.php';
+require_once './models/Invoice.php';
+require_once './models/Order_detail.php';
 class HomeController
 {
     public function index(){
@@ -59,8 +61,15 @@ class HomeController
         header("location: cart");
     }
     public function cart(){
+        if(!isset($_SESSION["cart"])||$_SESSION["cart"]==null){
+            $_SESSION['false']="Bạn chưa mua hàng!!!";
+            header("location: product");
+        }else{
+            include_once './views/user/cart.blade.php';
         
-        include_once './views/user/cart.blade.php';
+        }
+        
+        
     }
     public function update(){
         $key = $_GET['key'];
@@ -74,8 +83,68 @@ class HomeController
         
     }
     public function pay(){
+        if(!isset($_SESSION['login'])){
+            $_SESSION['login_erorr'] = "Bạn phải đăng nhập mới mua được hàng!!!";
+            header("location: user_login");
+        }else{
+            $id = $_SESSION['login']['id'];
+            $user = User::find($id);
 
-        echo 'chờ thanh toán';
+            //var_dump($user);
+            include_once './views/user/pay.blade.php';
+        
+        }
+        
+    }
+    public function postPay(){
+        $model = new Order();
+        $model->total= $_SESSION['total'];
+        $model->user_id= $_SESSION['login']['id'];
+        $model->note= $_POST['note'];
+        
+        $model->queryBuilder =  "insert into " . $model->table 
+                    . " (amount, user_id, note )"
+                    . " values "
+                    . " ( 
+                        '$model->total',
+                        '$model->user_id',
+                        '$model->note'
+                    )";
+        $model->exeQuery();
+        $total = Order::all();
+        $number_id = 0;
+        foreach($total as $key => $value){
+            if($number_id < $value->id){
+                $number_id = $value->id;
+            }
+        }
+        $order_id = $number_id;
+        $order = new Order_detail();
+        
+        foreach($_SESSION['cart'] as $key =>$value){
+            $order->product_id = $key;
+            $order->order_id = $order_id;
+            $order->quanta = $value['number'];
+            $order->price = $value['sell_price'];
+            $order->queryBuilder =  "insert into " . $order->table 
+                    . " (product_id, order_id, quanta, price )"
+                    . " values "
+                    . " ( 
+                        '$order->product_id',
+                        '$order->order_id',
+                        '$order->quanta',
+                        '$order->price'
+                    )";
+            
+            $order->exeQuery();
+        
+        }
+        unset($_SESSION['cart']);
+        
+        $_SESSION['order']="Đang chờ thanh toán và nhận hàng!!!";
+
+        header('location: ./product');
+        
     }
 }
 

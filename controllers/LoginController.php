@@ -6,17 +6,14 @@ require_once './models/Login.php';
 class LoginController
 {
 
-	    public function index(){
-
+    public function index(){
         global $baseUrl;
         global $adminUrl;
         global $adminAssetUrl;
         // echo "<pre>";
-
         // var_dump($products);die;
         include_once './views/admin/login/index.php';
     }
-
 
 
     public function postLogin(){
@@ -47,7 +44,7 @@ class LoginController
 
     public function logout(){
         session_destroy();
-        header('location: ./login');
+        header('location: ./product');
     }
     public function signup(){
 

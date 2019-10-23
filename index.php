@@ -18,6 +18,7 @@ require_once "./controllers/LoginController.php";
 require_once "./controllers/admin/UserController.php";
 require_once "./controllers/admin/AdminController.php";
 require_once "./controllers/admin/ProductController.php";
+require_once "./controllers/admin/OrderController.php";
 
 
 switch($url){
@@ -54,6 +55,10 @@ switch($url){
         $ctr = new HomeController();
         echo $ctr->pay();
         break;
+    case 'postPay':
+        $ctr = new HomeController();
+        echo $ctr->postPay();
+        break;
     
 // đăng kí
 case 'signup':
@@ -78,7 +83,11 @@ case 'postLogin':
         $ctr = new AdminController();
         echo $ctr->index();
         break;
-
+/* Hoa don */
+    // case 'admin/order':
+    //     $ctr = new OrderController();
+    //     echo $ctr->index();
+    //     break;
 /* User */
 case 'admin/user':
         $ctr = new UserController();
